@@ -1,0 +1,4 @@
+copy "./settings.ini" "$(OutDir)"
+copy "./icon.ico" "$(OutDir)"
+
+https://account.hoyolab.com/single-page/cross-login.html?complete=1

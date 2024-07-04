@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HoYoLABDesktopClass</class>
+ <widget class="QMainWindow" name="HoYoLABDesktopClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::FocusPolicy::StrongFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>HoYoLAB</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="hoyolabdesktop.qrc">
+    <normaloff>:/HoYoLABDesktop/icon.ico</normaloff>:/HoYoLABDesktop/icon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QWebEngineView" name="hoyoWebView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="url">
+       <url>
+        <string>https://www.hoyolab.com/home</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuNavigation">
+    <property name="title">
+     <string>Navigation</string>
+    </property>
+    <addaction name="actionHome"/>
+    <addaction name="separator"/>
+    <addaction name="actionReload"/>
+    <addaction name="separator"/>
+    <addaction name="actionBack"/>
+    <addaction name="separator"/>
+    <addaction name="actionForward"/>
+    <addaction name="separator"/>
+    <addaction name="actionFullscreen"/>
+   </widget>
+   <widget class="QMenu" name="menuGames">
+    <property name="title">
+     <string>Games</string>
+    </property>
+    <addaction name="actionGenshinRun"/>
+    <addaction name="separator"/>
+    <addaction name="actionStarrailRun"/>
+    <addaction name="separator"/>
+    <addaction name="actionHonkaiRun"/>
+    <addaction name="separator"/>
+    <addaction name="actionZenlessRun"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionOpenSettings"/>
+   </widget>
+   <addaction name="menuNavigation"/>
+   <addaction name="menuGames"/>
+   <addaction name="menuSettings"/>
+  </widget>
+  <action name="actionGenshinRun">
+   <property name="text">
+    <string>Launch Genshin Impact</string>
+   </property>
+  </action>
+  <action name="actionStarrailRun">
+   <property name="text">
+    <string>Launch Honkai Star Rail</string>
+   </property>
+  </action>
+  <action name="actionHonkaiRun">
+   <property name="text">
+    <string>Launch Honkai Impact</string>
+   </property>
+  </action>
+  <action name="actionZenlessRun">
+   <property name="text">
+    <string>Launch Zenless Zone Zero</string>
+   </property>
+  </action>
+  <action name="actionHome">
+   <property name="text">
+    <string>Home</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+H</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="text">
+    <string>Reload</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Left</string>
+   </property>
+  </action>
+  <action name="actionForward">
+   <property name="text">
+    <string>Forward</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Right</string>
+   </property>
+  </action>
+  <action name="actionOpenSettings">
+   <property name="text">
+    <string>Game Executable Settings</string>
+   </property>
+  </action>
+  <action name="actionFullscreen">
+   <property name="text">
+    <string>Fullscreen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="hoyolabdesktop.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <slot>checkRedirects()</slot>
+ </slots>
+</ui>
