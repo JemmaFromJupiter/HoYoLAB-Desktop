@@ -78,17 +78,18 @@
     </CustomBuildAfterTargets>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
+    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <CustomBuildAfterTargets>
     </CustomBuildAfterTargets>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
+    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PostBuildEvent>
-      <Command>copy "./settings.ini" "$(OutDir)"
-copy "./icon.ico" "$(OutDir)"</Command>
+      <Command>copy "./icon.ico" "$(OutDir)"</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
@@ -97,7 +98,7 @@ copy "./icon.ico" "$(OutDir)"</Command>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <PreBuildEvent>
-      <Command>del "$(OutDir)icon.ico"del "$(OutDir)settings.ini"</Command>
+      <Command>del "$(OutDir)icon.ico"</Command>
     </PreBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -106,8 +107,7 @@ copy "./icon.ico" "$(OutDir)"</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PostBuildEvent>
-      <Command>copy "./settings.ini" "$(OutDir)"
-copy "./icon.ico" "$(OutDir)"</Command>
+      <Command>copy "./icon.ico" "$(OutDir)"</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
@@ -116,7 +116,7 @@ copy "./icon.ico" "$(OutDir)"</Command>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <PreBuildEvent>
-      <Command>del "$(OutDir)icon.ico"del "$(OutDir)settings.ini"</Command>
+      <Command>del "$(OutDir)icon.ico"</Command>
     </PreBuildEvent>
     <CustomBuildStep>
       <Command>

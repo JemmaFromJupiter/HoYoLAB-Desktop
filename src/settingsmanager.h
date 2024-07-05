@@ -12,6 +12,8 @@ public:
 	QString loadSetting(const QString& key, const QString& defaultValue = "");
 
 	void updateSetting(const QString& key, const QString& value);
+	
+	void syncSettings();
 
 	void beginGroup(QAnyStringView prefix);
 
@@ -21,5 +23,6 @@ signals:
 
 private:
 	QSettings settings;
+	QString settings_path;
 
 };

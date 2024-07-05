@@ -1,7 +1,9 @@
 #include "settingsmanager.h"
 
 SettingsManager::SettingsManager(QObject* parent, QString settingsPath)
-	: QObject(parent), settings(settingsPath, QSettings::IniFormat) {};
+	: QObject(parent), settings(settingsPath, QSettings::IniFormat) {
+	settings_path = settingsPath;
+};
 
 QString SettingsManager::loadSetting(const QString& key, const QString& defaultValue) {
 	return settings.value(key, defaultValue).toString();
@@ -9,8 +11,12 @@ QString SettingsManager::loadSetting(const QString& key, const QString& defaultV
 
 void SettingsManager::updateSetting(const QString& key, const QString& value) {
 	settings.setValue(key, value);
-	settings.sync();
+	syncSettings();
 	emit settingsChanged(key, value);
+}
+
+void SettingsManager::syncSettings() {
+	settings.sync();
 }
 
 void SettingsManager::beginGroup(QAnyStringView prefix) {

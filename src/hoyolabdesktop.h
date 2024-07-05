@@ -9,6 +9,7 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QMessageBox>
+#include <QCloseEvent>
 #include "webview.h"
 #include "settings.h"
 #include "settingsmanager.h"
@@ -24,7 +25,7 @@ public:
 
 private:
 	QString cache_path = QDir::homePath() + "/.cache/HoYoLAB";
-	QString settings_path = QDir(QApplication::applicationDirPath()).filePath("settings.ini");
+	QString settings_path;
 	Ui::HoYoLABDesktopClass ui;
 	QUrl defaultUrl = QUrl("https://www.hoyolab.com/home");
 	QString invalidUrls{
@@ -40,6 +41,7 @@ private slots:
 	void on_actionBack_triggered();
 	void on_actionForward_triggered();
 	void on_actionFullscreen_triggered();
+	void on_actionExit_triggered();
 
 	void on_actionGenshinRun_triggered();
 	void on_actionStarrailRun_triggered();
@@ -56,5 +58,5 @@ private:
 	void setupUi();
 	void toHomePage();
 	void checkRedirects();
-
+	void closeEvent(QCloseEvent* event);
 };

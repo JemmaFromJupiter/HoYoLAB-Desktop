@@ -48,6 +48,9 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
       <property name="url">
        <url>
         <string>https://www.hoyolab.com/home</string>
@@ -79,6 +82,8 @@
     <addaction name="actionForward"/>
     <addaction name="separator"/>
     <addaction name="actionFullscreen"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuGames">
     <property name="title">
@@ -127,7 +132,7 @@
     <string>Home</string>
    </property>
    <property name="shortcut">
-    <string>Shift+H</string>
+    <string>Ctrl+Shift+H</string>
    </property>
   </action>
   <action name="actionReload">
@@ -143,7 +148,7 @@
     <string>Back</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Left</string>
+    <string>Alt+Left</string>
    </property>
   </action>
   <action name="actionForward">
@@ -151,7 +156,7 @@
     <string>Forward</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Right</string>
+    <string>Alt+Right</string>
    </property>
   </action>
   <action name="actionOpenSettings">
@@ -160,11 +165,22 @@
    </property>
   </action>
   <action name="actionFullscreen">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Fullscreen</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+F</string>
+    <string>F11</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

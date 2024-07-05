@@ -4,6 +4,13 @@
 HoYoLABDesktop::HoYoLABDesktop(QWidget *parent)
 	: QMainWindow(parent)
 {
+	QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+	QDir appDataDir(appDataPath);
+	
+	if (!appDataDir.exists())
+		appDataDir.mkdir(".");
+
+	settings_path = appDataDir.filePath("settings.ini");
 	settings = new SettingsManager(this, settings_path);
 	setupUi();
 }
@@ -20,6 +27,18 @@ void HoYoLABDesktop::on_actionBack_triggered() { ui.hoyoWebView->back(); }
 void HoYoLABDesktop::on_actionForward_triggered() { ui.hoyoWebView->forward(); }
 
 void HoYoLABDesktop::on_actionFullscreen_triggered() { isFullScreen() ? showNormal() : showFullScreen(); }
+
+void HoYoLABDesktop::on_actionExit_triggered() { close(); }
+
+void HoYoLABDesktop::closeEvent(QCloseEvent* event) {
+	settings->syncSettings();
+
+	delete settings;
+	profile->deleteLater();
+	page->deleteLater();
+
+	QMainWindow::closeEvent(event);
+}
 
 void HoYoLABDesktop::on_actionGenshinRun_triggered() {
 	QString value = settings->loadSetting("executables/genshin_executable_path");
@@ -103,6 +122,7 @@ void HoYoLABDesktop::setupUi() {
 	profile->setHttpCacheMaximumSize(20 * 1024 * 1024);
 
 	connect(profile, &QWebEngineProfile::downloadRequested, this, &HoYoLABDesktop::handleDownloadRequested);
+	
 
 	page = new WebPage(profile, ui.hoyoWebView);
 	page->setUrl(defaultUrl);
