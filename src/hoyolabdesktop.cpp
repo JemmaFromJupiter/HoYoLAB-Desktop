@@ -6,10 +6,15 @@ HoYoLABDesktop::HoYoLABDesktop(QWidget *parent)
 {
 	QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
 	QDir appDataDir(appDataPath);
+	QDir appDataCacheDir(appDataPath + "/webcache");
 	
 	if (!appDataDir.exists())
 		appDataDir.mkdir(".");
 
+	if (!appDataCacheDir.exists())
+		appDataCacheDir.mkdir(".");
+
+	cache_path = appDataCacheDir.path();
 	settings_path = appDataDir.filePath("settings.ini");
 	settings = new SettingsManager(this, settings_path);
 	setupUi();

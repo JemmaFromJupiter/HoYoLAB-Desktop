@@ -24,7 +24,7 @@ public:
 	~HoYoLABDesktop();
 
 private:
-	QString cache_path = QDir::homePath() + "/.cache/HoYoLAB";
+	QString cache_path;
 	QString settings_path;
 	Ui::HoYoLABDesktopClass ui;
 	QUrl defaultUrl = QUrl("https://www.hoyolab.com/home");
