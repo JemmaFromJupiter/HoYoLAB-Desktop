@@ -45,6 +45,16 @@ void HoYoLABDesktop::on_actionZenlessRun_triggered() {
 		QProcess::startDetached(value);
 }
 
+void HoYoLABDesktop::handleDownloadRequested(QWebEngineDownloadRequest* download) {
+	QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + download->downloadFileName();
+	QString filePath = QFileDialog::getSaveFileName(this, tr("Save File"), defaultPath);
+
+	if (!filePath.isEmpty()) {
+		download->setDownloadFileName(filePath);
+		download->accept();
+	}
+}
+
 void HoYoLABDesktop::on_actionOpenSettings_triggered() {
 	Settings settingsWindow(this, settings);
 	if (settingsWindow.exec()) {
@@ -91,6 +101,8 @@ void HoYoLABDesktop::setupUi() {
 	profile->setHttpCacheType(QWebEngineProfile::DiskHttpCache);
 	profile->setPersistentCookiesPolicy(QWebEngineProfile::AllowPersistentCookies);
 	profile->setHttpCacheMaximumSize(20 * 1024 * 1024);
+
+	connect(profile, &QWebEngineProfile::downloadRequested, this, &HoYoLABDesktop::handleDownloadRequested);
 
 	page = new WebPage(profile, ui.hoyoWebView);
 	page->setUrl(defaultUrl);

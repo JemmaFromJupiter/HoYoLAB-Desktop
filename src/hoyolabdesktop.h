@@ -7,6 +7,7 @@
 #include <QtWebEngineCore/QWebEngineProfile>
 #include <QtWebEngineCore/QWebEngineSettings>
 #include <QProcess>
+#include <QStandardPaths>
 #include <QMessageBox>
 #include "webview.h"
 #include "settings.h"
@@ -48,6 +49,8 @@ private slots:
 	void on_actionOpenSettings_triggered();
 
 	void on_hoyoWebView_loadFinished();
+
+	void handleDownloadRequested(QWebEngineDownloadRequest* download);
 
 private:
 	void setupUi();
