@@ -6,7 +6,7 @@ HoYoLABDesktop::HoYoLABDesktop(QWidget *parent)
 {
 	QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
 	QDir appDataDir(appDataPath);
-	QDir appDataCacheDir(appDataPath + "/webcache");
+	QDir appDataCacheDir(appDataPath + "/cache/webcache");
 	
 	if (!appDataDir.exists())
 		appDataDir.mkdir(".");
